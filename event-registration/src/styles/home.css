@@ -1,0 +1,17 @@
+/* src/styles/home.css */
+.home {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Take full viewport height */
+}
+
+.home h1 {
+  font-size: 2.5rem;
+}
+
+.home p {
+  font-size: 1.2rem;
+}
