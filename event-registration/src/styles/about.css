@@ -1,18 +1,47 @@
-/* src/styles/about.css */
 .about {
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Take full viewport height */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  min-height: 100vh; /* Ensure it takes the full viewport height */
+  margin: 0;
+  color: white; /* Ensure text is visible on a dark background */
+  padding: 20px; /* Add some padding for small screens */
+}
+
+.about h1 {
+  font-size: 2.5rem; /* Default font size */
+  margin: 0;
+  text-align: center; /* Center-align the heading */
+}
+
+.about p {
+  font-size: 1.2rem; /* Default font size */
+  margin-top: 10px;
+  text-align: center; /* Center-align the paragraph */
+  max-width: 800px; /* Limit width for readability */
+  line-height: 1.6; /* Improve readability with better line spacing */
+}
+
+/* --- Responsive Styles --- */
+@media screen and (max-width: 768px) {
   .about h1 {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduce font size for medium screens */
   }
-  
+
   .about p {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Reduce font size for paragraphs */
+    max-width: 90%; /* Allow paragraphs to fit better on smaller screens */
   }
-  
+}
+
+@media screen and (max-width: 480px) {
+  .about h1 {
+    font-size: 1.8rem; /* Further reduce heading font size */
+  }
+
+  .about p {
+    font-size: 0.9rem; /* Further reduce paragraph font size */
+    line-height: 1.4; /* Adjust line height */
+  }
+}

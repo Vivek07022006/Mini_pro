@@ -1,17 +1,46 @@
-/* src/styles/home.css */
 .home {
-  padding: 20px;
-  text-align: center;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  min-height: 100vh; /* Take full viewport height */
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  min-height: 100vh; /* Ensure it takes the full viewport height */
+  margin: 0;
+  padding: 20px; /* Add some padding for small screens */
 }
 
 .home h1 {
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* Default font size */
+  color: white; /* Text color for visibility */
+  margin: 0; /* Remove default margin */
+  text-align: center; /* Center-align the heading */
 }
 
 .home p {
-  font-size: 1.2rem;
+  font-size: 1.2rem; /* Default font size */
+  color: white; /* Text color for visibility */
+  margin-top: 10px; /* Space between heading and paragraph */
+  text-align: center; /* Ensure text alignment */
+}
+
+/* --- Responsive Styles --- */
+@media screen and (max-width: 768px) {
+  .home h1 {
+    font-size: 2rem; /* Reduce font size for medium screens */
+  }
+
+  .home p {
+    font-size: 1rem; /* Reduce font size for paragraphs */
+    max-width: 90%; /* Ensure the content fits nicely */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home h1 {
+    font-size: 1.8rem; /* Further reduce heading font size */
+  }
+
+  .home p {
+    font-size: 0.9rem; /* Further reduce paragraph font size */
+    line-height: 1.4; /* Adjust line height */
+  }
 }

@@ -1,81 +1,101 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios directly
+import axios from 'axios';
+import NavBar from './NavBar';
 import '../styles/login-register.css';
 
-// Create an axios instance with the base URL
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // Set the base URL for your API
+  baseURL: 'http://localhost:5000/api',
 });
 
-const LoginRegister = ({ setRole }) => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [formData, setFormData] = useState({ email: '', password: '', role: 'User' });
+const LoginRegister = () => {
+  const [isLogin, setIsLogin] = useState(true); // Toggle between Login/Register
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    role: 'adm', // Default role
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const endpoint = isLogin ? '/auth/login' : '/auth/register';
     try {
-      const endpoint = isLogin ? '/auth/login' : '/auth/register';
-      const { data } = await api.post(endpoint, formData); // Use the api instance
+      const { data } = await api.post(endpoint, formData);
       if (isLogin) {
         localStorage.setItem('token', data.token);
-        localStorage.setItem('role', data.role);
-        setRole(data.role);
-        window.location.href = `/dashboard-${data.role.toLowerCase()}`;
+        const redirectPath = data.role === 'adm' ? '/dashboard-admin' : '/dashboard-user';
+        window.location.href = redirectPath;
       } else {
         alert('Registration successful! Please log in.');
         setIsLogin(true);
       }
     } catch (error) {
-      console.error("Error during registration/login:", error); // Log the error to the console
-      alert(error.response?.data?.message || 'An error occurred');
+      alert('An error occurred. Please try again.');
     }
   };
 
   return (
-    <div className="login-register">
-      <div className="container">
+    <div className="login">
+      <NavBar />
+      <div className="login__form">
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label>Role</label>
+          <div className="form-group">
+            <label htmlFor="role">Role</label>
             <select
-              className="form-select"
+              id="role"
+              name="role"
               value={formData.role}
-              onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+              onChange={handleChange}
+              required
             >
-              <option value="User">User</option>
-              <option value="Admin">Admin</option>
+              <option value="adm">Admin</option>
+              <option value="usr">User</option>
             </select>
           </div>
-          <button className="btn btn-primary w-100" type="submit">
-            {isLogin ? 'Login' : 'Register'}
-          </button>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
         </form>
         <button
-          className="btn btn-link w-100"
+          className="btn-link"
           onClick={() => setIsLogin(!isLogin)}
+          style={{
+            marginTop: '10px',
+            background: 'none',
+            border: 'none',
+            color: '#007bff',
+            textDecoration: 'underline',
+            cursor: 'pointer',
+          }}
         >
-          {isLogin ? 'Need to register? Click here' : 'Already have an account? Log in'}
+          {isLogin ? 'Need to register? Click here' : 'Already a user? Log in'}
         </button>
       </div>
     </div>

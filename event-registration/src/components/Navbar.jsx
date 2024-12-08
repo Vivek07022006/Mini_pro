@@ -1,49 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/navbar.css';
+import '../styles/navbar.css'; // Adjust the path as necessary
 
-const Navbar = ({ role }) => {
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.href = '/login';
-  };
-
+const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
-        <Link className="navbar-brand" to="/">
-          EventManager
-        </Link>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
-              </Link>
-            </li>
-            {!role ? (
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login/Register
-                </Link>
-              </li>
-            ) : (
-              <li className="nav-item">
-                <button className="btn btn-link nav-link" onClick={handleLogout}>
-                  Logout
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <div className="navbar">
+    <div className="logo">
+      <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30163918/1241-768x591.png" alt="Logo" />
+    </div>
+    <div className="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/login">Login</a>
+    </div>
+  </div>
   );
 };
 
-export default Navbar;
+export default NavBar;

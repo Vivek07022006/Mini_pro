@@ -1,30 +1,66 @@
-/* src/styles/navbar.css */
 .navbar {
-  background-color: #007bff;
-  padding: 15px;
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between logo and links */
+    align-items: center; /* Center items vertically */
+    background-color: #333; /* Navbar background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for navbar */
+    position: fixed; /* Fixed position for top of the page */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top */
+    box-sizing: border-box; /* Include padding in width */
+    z-index: 1000; /* Ensure navbar is always on top */
 }
 
-.navbar h1 {
-  color: white;
-  margin: 0;
+.logo {
+    flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
-.navbar ul {
-  list-style: none;
-  padding: 0;
+.logo img {
+    height: 40px; /* Adjust logo size */
 }
 
-.navbar ul li {
-  display: inline;
-  margin-right: 20px;
+.nav-links {
+    display: flex; /* Row-wise layout */
+    margin-left: auto; /* Push links to the right */
 }
 
-.navbar ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+.nav-links a {
+    margin-left: 20px; /* Add spacing between links */
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    font-size: 16px; /* Default font size */
+    padding: 8px 12px; /* Default padding */
+    transition: all 0.3s ease; /* Smooth hover and responsiveness */
 }
 
-.navbar ul li a:hover {
-  text-decoration: underline;
+.nav-links a:hover {
+    color: #ddd; /* Change link color on hover */
+    text-decoration: none; /* No underline on hover */
+}
+
+/* --- Responsive Styles --- */
+@media screen and (max-width: 768px) {
+    .logo img {
+        height: 35px; /* Reduce logo size slightly */
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Reduce font size */
+        margin-left: 15px; /* Reduce margin between links */
+        padding: 6px 10px; /* Reduce padding for links */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo img {
+        height: 30px; /* Reduce logo size further */
+    }
+
+    .nav-links a {
+        font-size: 12px; /* Further reduce font size */
+        margin-left: 10px; /* Reduce margin between links */
+        padding: 4px 8px; /* Further reduce padding for links */
+    }
 }

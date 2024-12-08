@@ -1,15 +1,17 @@
 import React from 'react';
 import '../styles/about.css';
+import NavBar from './NavBar';
 
 const About = () => {
   return (
     <div className="about">
-      <div className="container">
-        <h2>About Event Manager</h2>
+      <NavBar />
+      <div className="content">
+        <h1>About Event Manager</h1>
         <p>
-          Event Manager is a platform where users can register for events, and administrators can
-          manage events efficiently. The system provides seamless interaction between event
-          organizers and participants.
+          Event Manager is a comprehensive platform designed to make event management
+          effortless and efficient. Whether you're planning a conference, workshop, or
+          seminar, our tools help you manage registrations, scheduling, and more.
         </p>
       </div>
     </div>
