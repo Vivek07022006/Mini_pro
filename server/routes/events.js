@@ -1,9 +1,10 @@
 const express = require('express');
 const Event = require('../models/Event'); // Make sure this path is correct
+const { verifyToken } = require('../middleware/auth'); // Import your authentication middleware
 const router = express.Router();
 
 // Add Event
-router.post('/', async (req, res) => {
+router.post('/events', verifyToken, async (req, res) => {
   try {
     const { name, date, description } = req.body; // Ensure these match your schema
 
@@ -16,7 +17,7 @@ router.post('/', async (req, res) => {
       name,
       date,
       description,
-      // Remove createdBy or handle differently if needed
+      createdBy: req.user.id, // Attach user ID if you're storing who created it
     });
 
     await event.save();
@@ -26,8 +27,9 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
 // Get all events
-router.get('/', verifyToken, async (req, res) => {
+router.get('/events', verifyToken, async (req, res) => {
   try {
     const events = await Event.find();
     res.status(200).json(events);
