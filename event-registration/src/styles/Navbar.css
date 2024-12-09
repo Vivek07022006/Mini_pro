@@ -1,10 +1,10 @@
 .navbar {
-    display: flex; /* Flexbox for alignment */
-    justify-content: space-between; /* Space between logo and links */
-    align-items: center; /* Center items vertically */
-    background-color: #333; /* Navbar background color */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #333;
     color: white; /* Text color */
-    padding: 10px 20px; /* Padding for navbar */
+    padding: 10px 20px ; /* Padding for navbar */
     position: fixed; /* Fixed position for top of the page */
     width: 100%; /* Full width */
     top: 0; /* Stick to the top */
@@ -17,7 +17,7 @@
 }
 
 .logo img {
-    height: 40px; /* Adjust logo size */
+    height: 40px;/* Adjust logo size */
 }
 
 .nav-links {
@@ -26,7 +26,7 @@
 }
 
 .nav-links a {
-    margin-left: 20px; /* Add spacing between links */
+    margin-left: 10px; /* Add spacing between links */
     color: white; /* Link color */
     text-decoration: none; /* Remove underline */
     font-weight: bold; /* Bold text */
@@ -36,7 +36,7 @@
 }
 
 .nav-links a:hover {
-    color: #ddd; /* Change link color on hover */
+    color: blue; /* Change link color on hover */
     text-decoration: none; /* No underline on hover */
 }
 

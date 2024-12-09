@@ -7,7 +7,7 @@ const Home = () => {
     <div className="home">
       <NavBar />
       <div className="content">
-        <h1>Welcome to Event Manager</h1>
+        <h1>Welcome to Event Registration System</h1>
         <p>Manage and register for events seamlessly!</p>
       </div>
     </div>

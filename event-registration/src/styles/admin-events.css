@@ -1,0 +1,41 @@
+.admin-events {
+    padding: 20px;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+  }
+  
+  .event-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between cards */
+    justify-content: center;
+  }
+  
+  .event-card {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .event-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+  }
+  
+  .event-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .event-card .card-text {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .event-card button {
+    display: block;
+    margin: 10px auto 0;
+  }
+  

@@ -1,0 +1,96 @@
+/* add-event.css */
+.admin-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f9f9f9; /* Light background */
+  min-height: 100vh;
+}
+
+.content.add-event {
+  flex: 1;
+  padding: 2rem;
+  background-color: #ffffff; /* White form background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+.add-event h2 {
+  color: #333; /* Dark gray text */
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.event-form {
+  font-family: 'Arial', sans-serif;
+}
+
+.event-form label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #555; /* Medium gray text */
+}
+
+.event-form .form-control {
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-form .form-control:focus {
+  border-color: #28a745; /* Green border on focus */
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+  outline: none;
+}
+
+.event-form textarea {
+  resize: none; /* Prevent resizing */
+  height: 100px; /* Fixed height */
+}
+
+.event-form button {
+  background-color: #28a745; /* Green button */
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.event-form button:hover {
+  background-color: #218838; /* Darker green */
+  transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.event-form button:active {
+  transform: scale(1); /* Reset scaling on click */
+}
+
+@media (max-width: 768px) {
+  .content.add-event {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .event-form label,
+  .event-form .form-control,
+  .event-form button {
+    font-size: 0.9rem; /* Slightly smaller text for mobile */
+  }
+
+  .event-form textarea {
+    height: 80px; /* Reduced height for mobile */
+  }
+}

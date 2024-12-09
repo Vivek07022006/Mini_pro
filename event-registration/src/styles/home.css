@@ -1,46 +1,58 @@
+/* Custom styles for the home page */
+
+/* General container styling */
 .home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  min-height: 100vh; /* Ensure it takes the full viewport height */
-  margin: 0;
-  padding: 20px; /* Add some padding for small screens */
+  min-height: 100vh; /* Full viewport height */
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Stack elements vertically */
+  text-align: center; /* Center text alignment */
+  background-color: #f8f9fa; /* Light background */
+  padding: 20px; /* Add some padding for spacing */
 }
 
+/* Main heading styling */
 .home h1 {
-  font-size: 2.5rem; /* Default font size */
-  color: white; /* Text color for visibility */
-  margin: 0; /* Remove default margin */
-  text-align: center; /* Center-align the heading */
+  margin-top: 30%;
+  font-size: 3rem; /* Larger font size for heading */
+  font-weight: bold; /* Bold text */
+  color: #343a40; /* Dark gray color */
+  margin-bottom: 10px; /* Space below the heading */
 }
 
+/* Paragraph styling */
 .home p {
-  font-size: 1.2rem; /* Default font size */
-  color: white; /* Text color for visibility */
-  margin-top: 10px; /* Space between heading and paragraph */
-  text-align: center; /* Ensure text alignment */
+  font-size: 1.2rem; /* Medium font size */
+  color: #6c757d; /* Muted gray color */
+  margin-bottom: 20px; /* Space below the paragraph */
+  line-height: 1.6; /* Add line height for better readability */
 }
 
-/* --- Responsive Styles --- */
-@media screen and (max-width: 768px) {
+/* Button styling */
+.home .btn {
+  font-size: 1rem; /* Medium font size for buttons */
+  padding: 10px 20px; /* Add padding */
+  background-color: #007bff; /* Primary blue color */
+  color: #fff; /* White text */
+  border: none; /* Remove border */
+  border-radius: 8px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Button hover effect */
+.home .btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Responsive heading for smaller screens */
+@media (max-width: 768px) {
   .home h1 {
-    font-size: 2rem; /* Reduce font size for medium screens */
+    font-size: 2.5rem;
   }
 
   .home p {
-    font-size: 1rem; /* Reduce font size for paragraphs */
-    max-width: 90%; /* Ensure the content fits nicely */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .home h1 {
-    font-size: 1.8rem; /* Further reduce heading font size */
-  }
-
-  .home p {
-    font-size: 0.9rem; /* Further reduce paragraph font size */
-    line-height: 1.4; /* Adjust line height */
+    font-size: 1rem;
   }
 }

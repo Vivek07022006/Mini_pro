@@ -1,47 +1,58 @@
+/* Custom styles for the about page */
+
+/* General container styling */
 .about {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  min-height: 100vh; /* Ensure it takes the full viewport height */
-  margin: 0;
-  color: white; /* Ensure text is visible on a dark background */
-  padding: 20px; /* Add some padding for small screens */
+  min-height: 100vh; /* Full viewport height */
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Stack elements vertically */
+  text-align: center; /* Center text alignment */
+  background-color: #f8f9fa; /* Light background */
+  padding: 20px; /* Add some padding for spacing */
 }
 
+/* Main heading styling */
 .about h1 {
-  font-size: 2.5rem; /* Default font size */
-  margin: 0;
-  text-align: center; /* Center-align the heading */
+  margin-top: 15%;
+  font-size: 3rem; /* Larger font size for heading */
+  font-weight: bold; /* Bold text */
+  color: #343a40; /* Dark gray color */
+  margin-bottom: 10px; /* Space below the heading */
 }
 
+/* Paragraph styling */
 .about p {
-  font-size: 1.2rem; /* Default font size */
-  margin-top: 10px;
-  text-align: center; /* Center-align the paragraph */
-  max-width: 800px; /* Limit width for readability */
-  line-height: 1.6; /* Improve readability with better line spacing */
+  font-size: 1.2rem; /* Medium font size */
+  color: #6c757d; /* Muted gray color */
+  margin-bottom: 20px; /* Space below the paragraph */
+  line-height: 1.6; /* Add line height for better readability */
 }
 
-/* --- Responsive Styles --- */
-@media screen and (max-width: 768px) {
+/* Button styling (if required in the future) */
+.about .btn {
+  font-size: 1rem; /* Medium font size for buttons */
+  padding: 10px 20px; /* Add padding */
+  background-color: #007bff; /* Primary blue color */
+  color: #fff; /* White text */
+  border: none; /* Remove border */
+  border-radius: 8px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+/* Button hover effect */
+.about .btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Responsive heading for smaller screens */
+@media (max-width: 768px) {
   .about h1 {
-    font-size: 2rem; /* Reduce font size for medium screens */
+    font-size: 2.5rem;
   }
 
   .about p {
-    font-size: 1rem; /* Reduce font size for paragraphs */
-    max-width: 90%; /* Allow paragraphs to fit better on smaller screens */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .about h1 {
-    font-size: 1.8rem; /* Further reduce heading font size */
-  }
-
-  .about p {
-    font-size: 0.9rem; /* Further reduce paragraph font size */
-    line-height: 1.4; /* Adjust line height */
+    font-size: 1rem;
   }
 }

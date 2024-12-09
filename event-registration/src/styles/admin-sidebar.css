@@ -1,0 +1,32 @@
+.admin-sidebar {
+    width: 250px; /* Fixed sidebar width */
+    background-color: #343a40; /* Dark background */
+    color: white; /* White text */
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed sidebar */
+  }
+  
+  .admin-sidebar h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    border-bottom: 1px solid #495057;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background-color: #495057; /* Highlight on hover */
+  }
+  
+  .nav-link.active {
+    background-color: #007bff; /* Highlight active link */
+    font-weight: bold;
+  }
+  

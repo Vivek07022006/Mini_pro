@@ -8,11 +8,11 @@ const api = axios.create({
 });
 
 const LoginRegister = () => {
-  const [isLogin, setIsLogin] = useState(true); // Toggle between Login/Register
+  const [isLogin, setIsLogin] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    role: 'adm', // Default role
+    role: 'User', // Default role set to "User" for registration
   });
 
   const handleChange = (e) => {
@@ -25,16 +25,19 @@ const LoginRegister = () => {
     const endpoint = isLogin ? '/auth/login' : '/auth/register';
     try {
       const { data } = await api.post(endpoint, formData);
+
       if (isLogin) {
+        // Save token and redirect
         localStorage.setItem('token', data.token);
-        const redirectPath = data.role === 'adm' ? '/dashboard-admin' : '/dashboard-user';
+        const redirectPath = data.role === 'Admin' ? '/dashboard-admin/events' : '/dashboard-user/events';
         window.location.href = redirectPath;
       } else {
         alert('Registration successful! Please log in.');
         setIsLogin(true);
       }
     } catch (error) {
-      alert('An error occurred. Please try again.');
+      console.error(error.response?.data?.message || 'An error occurred.');
+      alert(error.response?.data?.message || 'An error occurred.');
     }
   };
 
@@ -44,19 +47,21 @@ const LoginRegister = () => {
       <div className="login__form">
         <h2>{isLogin ? 'Login' : 'Register'}</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="role">Role</label>
-            <select
-              id="role"
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              required
-            >
-              <option value="adm">Admin</option>
-              <option value="usr">User</option>
-            </select>
-          </div>
+          {isLogin && (
+            <div className="form-group">
+              <label htmlFor="role">Role</label>
+              <select
+                id="role"
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                required
+              >
+                <option value="Admin">Admin</option>
+                <option value="User">User</option>
+              </select>
+            </div>
+          )}
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input

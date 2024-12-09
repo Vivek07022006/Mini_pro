@@ -1,67 +1,88 @@
-const express = require("express");
-const { verifyToken, isAdmin } = require("../middleware/auth");
-const Event = require("../models/Event");
+const express = require('express');
+const Event = require('../models/Event'); // Make sure this path is correct
 const router = express.Router();
 
-// Get all events (accessible to everyone)
-router.get("/", async (req, res) => {
+// Add Event
+router.post('/', async (req, res) => {
+  try {
+    const { name, date, description } = req.body; // Ensure these match your schema
+
+    // Validate required fields
+    if (!name || !date || !description) {
+      return res.status(400).json({ message: 'All fields are required.' });
+    }
+
+    const event = new Event({
+      name,
+      date,
+      description,
+      // Remove createdBy or handle differently if needed
+    });
+
+    await event.save();
+    res.status(201).json({ message: 'Event created successfully', event });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+// Get all events
+router.get('/', verifyToken, async (req, res) => {
   try {
     const events = await Event.find();
-    res.json(events);
+    res.status(200).json(events);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Create an event (Admin only)
-router.post("/", verifyToken, isAdmin, async (req, res) => {
+// Get an event by ID
+router.get('/events/:id', verifyToken, async (req, res) => {
   try {
-    const { name, date, location, description } = req.body;
-    const event = new Event({ name, date, location, description });
-    await event.save();
-    res.status(201).json(event);
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+    res.status(200).json(event);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Update an event (Admin only)
-router.put("/:id", verifyToken, isAdmin, async (req, res) => {
+// Update an event
+router.put('/events/:id', verifyToken, async (req, res) => {
   try {
-    const { id } = req.params;
-    const updatedEvent = await Event.findByIdAndUpdate(id, req.body, { new: true });
-    if (!updatedEvent) return res.status(404).json({ message: "Event not found" });
-    res.json(updatedEvent);
+    const { name, date, description } = req.body;
+    const updatedEvent = await Event.findByIdAndUpdate(
+      req.params.id,
+      { name, date, description },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedEvent) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    res.status(200).json({ message: 'Event updated successfully', updatedEvent });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-// Delete an event (Admin only)
-router.delete("/:id", verifyToken, isAdmin, async (req, res) => {
+// Delete an event
+router.delete('/events/:id', verifyToken, async (req, res) => {
   try {
-    const { id } = req.params;
-    const deletedEvent = await Event.findByIdAndDelete(id);
-    if (!deletedEvent) return res.status(404).json({ message: "Event not found" });
-    res.json({ message: "Event deleted successfully" });
+    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
+    if (!deletedEvent) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+    res.status(200).json({ message: 'Event deleted successfully' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Register for an event (Logged-in users only)
-router.post("/:id/register", verifyToken, async (req, res) => {
-  try {
-    const { id } = req.params;
-    const event = await Event.findById(id);
-    if (!event) return res.status(404).json({ message: "Event not found" });
-
-    event.registrations.push(req.user.id); // Add user to registrations
-    await event.save();
-
-    res.json({ message: "Registered successfully" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 

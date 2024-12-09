@@ -11,6 +11,8 @@ import Home from './components/Home';
 import About from './components/About';
 import Login from './components/LoginRegister';
 import PrivateRoute from './components/PrivateRoute'; // Import PrivateRoute
+import AdminDashboard from "./components/AdminDashboard";
+import UserDashboard from "./components/UserDashboard";
 
 function App() {
   return (
@@ -25,29 +27,29 @@ function App() {
             {/* Admin Routes */}
             <Route 
               path="/dashboard-admin/events" 
-              element={<PrivateRoute element={<AdminEvents />} />} 
+              element={<AdminEvents />}
             />
             <Route 
               path="/dashboard-admin/add-event" 
-              element={<PrivateRoute element={<AddEvent />} />} 
+              element={<AddEvent />} 
             />
             <Route 
               path="/dashboard-admin/update-delete-event" 
-              element={<PrivateRoute element={<UpdateDeleteEvent />} />} 
+              element={<UpdateDeleteEvent />}  
             />
             
             {/* User Routes */}
             <Route 
               path="/dashboard-user/events" 
-              element={<PrivateRoute element={<UserEvents />} />} 
+              element={<UserEvents />} 
             />
             <Route 
               path="/dashboard-user/register-event" 
-              element={<PrivateRoute element={<RegisterEvent />} />} 
+              element={<RegisterEvent />}
             />
             <Route 
               path="/dashboard-user/update-registration" 
-              element={<PrivateRoute element={<UpdateRegistration />} />} 
+              element={<UpdateRegistration />} 
             />
           </Routes>
         </div>

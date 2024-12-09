@@ -7,9 +7,9 @@ const About = () => {
     <div className="about">
       <NavBar />
       <div className="content">
-        <h1>About Event Manager</h1>
+        <h1>About Event Registration System</h1>
         <p>
-          Event Manager is a comprehensive platform designed to make event management
+          Event Registration is a comprehensive platform designed to make event management
           effortless and efficient. Whether you're planning a conference, workshop, or
           seminar, our tools help you manage registrations, scheduling, and more.
         </p>
